@@ -152,12 +152,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
       body:
           _isLoading
               ? const Center(child: CircularProgressIndicator())
-              : Padding(
+              : SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // Header dengan username dan email
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
