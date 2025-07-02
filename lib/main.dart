@@ -43,46 +43,78 @@
 //   }
 // }
 
-// m14 - praktek - 1
-import 'package:flutter/material.dart';
-import 'package:minggu_12/latihan14/main_shared_preferences.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:minggu_12/M14-2/signin_app_screen.dart';
-import 'package:minggu_12/M14-2/home_app_screen.dart';
+// m14 - praktek - 2
+// import 'package:flutter/material.dart';
+// import 'package:minggu_12/latihan14/main_shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:minggu_12/M14-2/signin_app_screen.dart';
+// import 'package:minggu_12/M14-2/home_app_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   Future<Widget> _checkLoginStatus() async {
+//     final prefs = await SharedPreferences.getInstance();
+//     final username = prefs.getString('username');
+//     if (username != null && username.isNotEmpty) {
+//       return const HomeScreen();
+//     } else {
+//       return const SigninAppScreen();
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Shared Preferences Login',
+//       home: FutureBuilder(
+//         future: _checkLoginStatus(),
+//         builder: (context, snapshot) {
+//           if (snapshot.connectionState == ConnectionState.waiting) {
+//             return const Scaffold(
+//               body: Center(child: CircularProgressIndicator()),
+//             );
+//           } else {
+//             return snapshot.data as Widget;
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }
+
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:minggu_12/m15/books_provider.dart';
+import 'package:minggu_12/m15/books_screen.dart';
+import 'package:provider/provider.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => BooksProvider())],
+      child: const MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  Future<Widget> _checkLoginStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    final username = prefs.getString('username');
-    if (username != null && username.isNotEmpty) {
-      return const HomeScreen();
-    } else {
-      return const SigninAppScreen();
-    }
-  }
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Shared Preferences Login',
-      home: FutureBuilder(
-        future: _checkLoginStatus(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            );
-          } else {
-            return snapshot.data as Widget;
-          }
-        },
-      ),
-    );
+    return MaterialApp(home: BooksScreen());
   }
 }

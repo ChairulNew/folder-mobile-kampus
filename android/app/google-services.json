@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "77719864454",
+    "project_id": "test-belajar-30080",
+    "storage_bucket": "test-belajar-30080.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77719864454:android:e570fd5b8e7138734c3d07",
+        "android_client_info": {
+          "package_name": "com.example.minggu_12"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB0Dnagj9_lpp2_DzFPpqtTYX41kGamoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77719864454:android:f2c12723f33037234c3d07",
+        "android_client_info": {
+          "package_name": "com.mytestproject.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB0Dnagj9_lpp2_DzFPpqtTYX41kGamoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
